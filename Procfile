@@ -1,0 +1,1 @@
+web: cd HashGaurd/backend/HashGaurd && mvn clean package -q && java -jar target/backend-1.0.0.jar -Dserver.port=$PORT
