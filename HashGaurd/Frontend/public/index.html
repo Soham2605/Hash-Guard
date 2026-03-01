@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HashGuard — File Hash Converter</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT: upload & generate -->
+    <div class="card" id="leftCard">
+      <h1>HashGuard</h1>
+      <p class="hint">Upload a file (temporary only). Choose algorithm and click <b>Generate Hash</b>.</p>
+
+      <div id="uploadArea" class="upload-area">
+        <div class="title">Drag & drop a file here</div>
+        <div class="sub">or click to select — maximum file processed in-memory</div>
+        <input id="fileInput" type="file" style="display:none" />
+      </div>
+
+      <div class="controls">
+        <select id="algoSelect" aria-label="Select hash algorithm">
+          <option value="SHA-256" selected>SHA-256 (recommended)</option>
+          <option value="MD5">MD5</option>
+          <option value="SHA-1">SHA-1</option>
+          <option value="SHA-512">SHA-512</option>
+        </select>
+
+        <button id="generateBtn" class="gen-btn small">Generate Hash</button>
+      </div>
+
+      <div id="resultArea" class="result-box" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="muted" id="fileName"></div>
+          <div class="muted" id="fileSize"></div>
+        </div>
+
+        <div style="margin-top:12px" class="hash-line">
+          <div id="hashText" class="hash-text">-</div>
+          <button id="copyBtn" class="copy-btn">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: compare two files -->
+    <div class="card compare">
+      <h1 style="font-size:18px;margin:0">Compare Files</h1>
+      <div class="muted">Upload two files and get bit-level match percentage based on selected algorithm.</div>
+
+      <div class="file-input">
+        <label class="fake-file" id="fake1">No file selected</label>
+        <button class="gen-btn small" id="pick1">Choose</button>
+        <input id="file1" type="file" />
+      </div>
+
+      <div class="file-input">
+        <label class="fake-file" id="fake2">No file selected</label>
+        <button class="gen-btn small" id="pick2">Choose</button>
+        <input id="file2" type="file" />
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:8px">
+        <select id="algoSelect2">
+          <option value="SHA-256" selected>SHA-256</option>
+          <option value="MD5">MD5</option>
+          <option value="SHA-1">SHA-1</option>
+          <option value="SHA-512">SHA-512</option>
+        </select>
+        <button id="compareBtn" class="gen-btn small">Compare</button>
+      </div>
+
+      <div id="compareResult" class="result-box" style="display:none;margin-top:10px">
+        <div class="muted" id="compareFiles"></div>
+        <div style="margin-top:8px">
+          <div id="compareHashes" style="font-family:monospace;font-size:13px;color:#cfefff;word-break:break-all"></div>
+          <div style="margin-top:8px;font-weight:700" id="comparePercent"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
