@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: YourServiceName
+    env: java
+    plan: free
+    runtime: java
+    buildCommand: ./mvnw clean package  # Adjust according to your build tool
+    startCommand: java -jar target/your-app.jar  # Adjust path to your jar
+    healthCheckPath: /health  # Adjust to your application's health check endpoint
